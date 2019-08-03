@@ -1,21 +1,35 @@
 #!/usr/bin/env python3
 
 __version__ = '0.1.0'
-import hashlib
 import os
 import math
+from hash_file import hash_file
 
-from menu import menu
 
-main_menu = menu('Menu')
-
-main_menu.new_option('e', 'eric', print,  "Menu e has been selected")
-main_menu.new_option('hash', 'hashing_stuff', print,  "Menu 2 has been selected")
-main_menu.new_option(3, 'option 3', print,  "Menu 3 has been selected")
-main_menu.new_option(4, 'option 4', print,  "Menu 4 has been selected")
-# main_menu.new_option('quit', 'Exit the program', return,  False)
-
-loop=True 
+## Text menu in Python
+      
+def print_menu():       ## Your menu design here
+    print (30 * "-" , "MENU" , 30 * "-")
+    print ("hash \t-\t hashes stuff")
+    print ("test \t-\t test option (Does Nothing)")
+    print ("quit \t-\t Exit the program")
+    print (67 * "-")
+  
+loop=True      
+  
 while loop:          ## While loop which will keep going until loop = False
-    loop = main_menu.print_menu(loop)    ## Displays menu
+    print_menu()    ## Displays menu
+    choice = input("Select operation: ")
+     
+    if choice=='hash': 
+        print("hash")   
+        hash_stuff = hash_file() 
+    elif choice=='test':
+        print ("Test has been selected")
+    elif choice=='quit':
+        print ("Exiting .......")
+        loop=False # This will make the while loop to end as not value of loop is set to False
+    else:
+        # catch any invalid values
+        raw_input("Wrong option selection. Enter any key to try again..")
     
