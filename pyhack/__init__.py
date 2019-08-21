@@ -33,7 +33,7 @@ while loop:          ## While loop which will keep going until loop = False
     print_menu()    ## Displays menu
     choice = input("Select operation: ")
     
-    clear()
+    # clear()
     if choice=='hash':  
         hash_stuff = hash_file() 
     elif choice=='snif':
