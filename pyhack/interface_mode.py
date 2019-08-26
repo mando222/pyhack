@@ -9,15 +9,34 @@ class interface_mode:
         self.select_interface()
         if (self.interface != "empty"):
             self.change_mode()
+        else: 
+            print("No valid interface selected")
+            self.select_interface()
     def select_interface(self):
         interfaces=netifaces.interfaces()
+        # these values allow you to referance addresses from a spacific network layer
+        link_layer_addresses=netifaces.AF_LINK
+        internet_addresses=netifaces.AF_INET
+        ipv6_addresses=netifaces.AF_INET6
+
         loop=True      
-        
+        count = 1
         while loop: 
             print("select and interface to modify")
-            count = 1
+
+
             for interface in interfaces:
-                print(count,"\t-\t",interface)
+                ip_addrs = netifaces.ifaddresses(interface)
+                # mac_addr = ip_addrs[link_layer_addresses]
+                # print(mac_addr)
+
+
+                # print(count,".\t",interface, "-", mac_addr)
+                print("\t address: ")
+
+
+
+
                 count = count + 1
             selection = int(input())
             if (count >= selection):
