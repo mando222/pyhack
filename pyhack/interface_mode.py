@@ -17,7 +17,15 @@ class interface_mode:
             print("select and interface to modify")
             count = 1
             for interface in interfaces:
-                print(count,"\t-\t",interface)
+
+                ip_addrs = netifaces.ifaddresses(interface)
+                # mac_addr = ip_addrs[link_layer_addresses]
+                # print(mac_addr)
+
+
+                print(count,".\t",interface, "-", mac_addr)
+                print("\t address: ")
+
                 count = count + 1
             selection = int(input())
             if (count >= selection):
